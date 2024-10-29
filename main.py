@@ -15,6 +15,18 @@ class TodoList:
         self.tarefas.append(tarefa)
         print(f"Tarefa '{descricao}' adicionada com sucesso!")
 
+    def listar_pendentes(self):
+        print("\nTarefas Pendentes:")
+        for tarefa in self.tarefas:
+            if not tarefa["concluida"]:
+                self.exibir_tarefa(tarefa)
+
+    def listar_concluidas(self):
+        print("\nTarefas Concluídas:")
+        for tarefa in self.tarefas:
+            if tarefa["concluida"]:
+                self.exibir_tarefa(tarefa)
+
 def main():
     lista = TodoList()
     while True:
@@ -32,6 +44,11 @@ def main():
             prazo = input("Prazo (DD-MM-YYYY): ")
             prioridade = input("Prioridade (alta, média, baixa): ").lower()
             lista.adicionar_tarefa(descricao, prazo, prioridade)
+        
+        elif opcao == "2":
+            lista.listar_pendentes()
+        elif opcao == "3":
+            lista.listar_concluidas()
 
 
 if __name__ == "__main__":
