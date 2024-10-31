@@ -49,6 +49,27 @@ def main():
             lista.listar_pendentes()
         elif opcao == "3":
             lista.listar_concluidas()
+        
+        elif opcao == "4":
+            descricao = input("Descrição da tarefa a concluir: ")
+            lista.marcar_concluida(descricao)
+        elif opcao == "5":
+            descricao = input("Descrição da tarefa a remover: ")
+            lista.remover_tarefa(descricao)
+
+    def marcar_concluida(self, descricao):
+        for tarefa in self.tarefas:
+            if tarefa["descricao"] == descricao:
+                tarefa["concluida"] = True
+                print(f"Tarefa '{descricao}' marcada como concluída.")
+            return
+        print(f"Tarefa '{descricao}' não encontrada.")
+
+    def remover_tarefa(self, descricao):
+        self.tarefas = [t for t in self.tarefas if t["descricao"] != descricao]
+        print(f"Tarefa '{descricao}' removida.")
+
+
 
 
 if __name__ == "__main__":
